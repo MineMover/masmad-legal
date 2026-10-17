@@ -89,14 +89,29 @@
       </div>
 
       <div class="section">
-        <h2>4. Veri Saklama ve Tek Tuşla Kalıcı Silme Politikası (Right to Erasure)</h2>
-        <div class="callout callout-amber">
-          <p><strong>Kalıcı Veri Silme Garantisi:</strong></p>
+        <h2>4. Veri Saklama, Silme ve Hesap Kapatma Politikası</h2>
+        <p>
+          MASMAD, "Gizlilik Odaklı Tasarım" (Privacy by Design) ve "Minimum Veri" prensiplerini benimser:
+        </p>
+
+        <div class="callout callout-amber" style="margin-bottom: 16px;">
+          <p><strong>• Yerel Verilerin ve Anahtarların Silinmesi:</strong></p>
           <p>
-            Ebeveyn, veli cihazındaki MASMAD uygulamasında <strong>Ayarlar &gt; "Tüm Verileri ve Eşleşmeyi Kalıcı Olarak Sil"</strong> butonuna bastığı an; tüm yerel şifreleme anahtarları, cihaz eşleşme kayıtları ve kural tanımları cihazlardan ve geçici iletim kuyruklarından anında ve geri döndürülemez biçimde yok edilir.
+            Kullanıcı, uygulama içerisindeki Ayarlar menüsünden "Tüm Verileri ve Eşleşmeyi Kalıcı Olarak Sil" butonunu kullandığında; cihazdaki şifreleme anahtarları (iOS Keychain / Android Keystore), uygulama kuralları ve tüm yerel önbellek kalıcı olarak yok edilir. Şifreleme anahtarı silindiği için eski oturuma ait şifreli paketlerin bir daha çözülmesi matematiksel olarak imkansız hale gelir.
           </p>
-          <p style="margin-top: 8px;">
-            Uygulamanın cihazlardan silinmesi halinde hiçbir sunucu kaydı saklanmaya devam etmez.
+        </div>
+
+        <div class="callout callout-blue" style="margin-bottom: 16px;">
+          <p><strong>• Sunucu Tarafındaki Şifreli Posta Kutusu (Mailbox) Saklama Süresi:</strong></p>
+          <p>
+            Sunucu üzerinde kullanıcı adı, e-posta veya telefon gibi açık kimlik bilgileri ASLA tutulmaz. Cihazlar arası kural iletimi için kullanılan tek yönlü özet posta kutusu kimliği (<code>pair_id</code>) ve uçtan uca şifreli ikili paketler (<code>blob</code>); sistemde aktif eşitleme yapılmadığı veya cihaz eşleşmesi sonlandırıldığı takdirde en geç <strong>90 gün içerisinde otomatik olarak zaman aşımına uğrar ve sunucu veritabanından kalıcı olarak temizlenir</strong>.
+          </p>
+        </div>
+
+        <div class="callout callout-blue">
+          <p><strong>• Ağ Güvenliği ve Altyapı Günlükleri (IP ve İstek Bilgileri):</strong></p>
+          <p>
+            Uygulama seviyesinde kullanıcıların IP adresleri veritabanına kaydedilmez veya profillenmez. Altyapı sağlayıcısı (Supabase / Cloudflare) tarafından yalnızca hizmetin sürekliliği, kötüye kullanımın engellenmesi ve siber saldırılara (DDoS) karşı savunma amacıyla tutulan standart geçici HTTP bağlantı günlükleri (IP adresi, istek zamanı ve durum kodu), <strong>yasal güvenlik gereksinimleri çerçevesinde en fazla 30 gün süreyle saklanır ve bu sürenin sonunda otomatik olarak üzerine yazılarak imha edilir</strong>. Bu günlükler hiçbir koşulda kullanıcı kimlikleriyle eşleştirilmez veya üçüncü taraflarla paylaşılmaz.
           </p>
         </div>
       </div>
